@@ -26,7 +26,7 @@ My pipeline consisted of 5 steps.
 - ROI: here I actually use two ROIs one for left and one for right. Horizon and center is important here.
 - Two separate Hough Lines Detection. Tuned the parameters for best detection in the videos: (rho= 1, theta = 1deg, Th = 8, Min Lenght = 7, Max Gap = 5)
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by using a statitical method (least squares) to obtain the best fitted line for the points detected from the hough line algorith.
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by using a statitical method (least squares) to obtain the best fitted line for the points detected from the hough line algorithm.
 Our Hough Lines returns a mask of the image with only the lines pixels detected. These can be used as points and therefore least squares can be applied. Numpy function nonzero will return a list of points of the non zero pixels that can be used with least squares.
 The resulting line is a good average of each side of the lanes.
 
@@ -39,9 +39,9 @@ Below an example image:
 
 Potential shortcomings:
 - If the car switches lanes left and right points could mix together in a single ROI (i.e. right points in left roi)
-- Some roads (like in Las Vegas) don't have lane lines, just small reflectors squares. This "lines" would be hard to detect. Also roads that don't have markers at all, just the division from asphalt and terrain.
+- Some roads (like in Las Vegas) don't have lane lines, just small reflectors squares. These "lines" would be hard to detect. Also roads that don't have markers at all, just the division from asphalt and terrain.
 - Contrast changes, light changes can affect the performance of Canny and Hough Lines.
-- Cars to close to the HUD or on the sides would be hard to detect because lines would be hidden from the camera
+- Cars to close to the car front or on the sides would be hard to detect because lines would be hidden from the camera
 - Pedestrian Crossings would add various similar lines that could confuse from the actual lane lines.
 
 ###3. Suggest possible improvements to your pipeline
